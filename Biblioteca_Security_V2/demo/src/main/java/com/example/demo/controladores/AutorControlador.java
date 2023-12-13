@@ -22,14 +22,13 @@ public class AutorControlador {
     @Autowired
     private AutorServicio autorServicio;
 
-    // este es para ver el formulario
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/registrar")
     public String registrar() {
         return "autor_form.html";
     }
 
-    // este es para que viaje el "nombre" que el usuario haya cargado en el
-    // formulario
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, ModelMap modelo) {
         try {
@@ -53,13 +52,14 @@ public class AutorControlador {
         return "autor_list.html";
     }
 
-    // midifiqué acá respecto V2, ya no se pide nombre en el paràmetro
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) throws MyException {
         modelo.put("autor", autorServicio.getOne(id));
         return "autor_modificar.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificarPost(@PathVariable String id, String nombre, ModelMap modelo) {
         try {

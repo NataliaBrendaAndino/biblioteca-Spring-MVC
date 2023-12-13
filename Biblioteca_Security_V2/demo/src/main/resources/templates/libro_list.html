@@ -16,7 +16,7 @@
     <body>
       <nav class="navbar navbar-expand-lg navBar">
             <div class="containerImg">
-                <a href="/" class="navbar-brand d-flex align-items-center">
+                <a href="/inicio" class="navbar-brand d-flex align-items-center">
                   <img class="logo" src="/imagenes/libros.jpg" width="60" height="60" alt="Img logo">
                 </a>
               </div>
@@ -32,7 +32,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         
                         <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><hr sec:authorize="hasRole('ADMIN')" class="dropdown-divider"></li>
                         
                         <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
                     </ul>
@@ -46,7 +46,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         
                         <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><hr sec:authorize="hasRole('ADMIN')" class="dropdown-divider"></li>
                        
                         <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
                     </ul>
@@ -61,7 +61,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         
                         <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><hr sec:authorize="hasRole('ADMIN')" class="dropdown-divider"></li>
                         
                         <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
                     </ul>

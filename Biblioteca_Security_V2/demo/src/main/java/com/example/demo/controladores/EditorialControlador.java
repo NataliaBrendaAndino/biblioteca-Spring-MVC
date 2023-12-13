@@ -21,11 +21,13 @@ public class EditorialControlador {
     @Autowired
     private EditorialServicio editorialServicio;
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/registrar") // localhost:8080/autor/registrar
     public String registrar() {
         return "editorial_form.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, ModelMap modelo) {
 
@@ -53,6 +55,7 @@ public class EditorialControlador {
         return "editorial_list.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
         modelo.put("editorial", editorialServicio.getOne(id));

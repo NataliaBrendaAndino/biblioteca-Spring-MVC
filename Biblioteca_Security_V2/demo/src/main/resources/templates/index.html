@@ -30,7 +30,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         
                         <li><a th:if="${session.usuariosession == null}" class="dropdown-item" th:href="@{/registrar}">Registrarme</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><hr th:if="${session.usuariosession == null}" class="dropdown-divider"></li>
                         
                         <li><a th:if="${session.usuariosession == null}" class="dropdown-item" th:href="@{/login}">Login</a></li>
 
